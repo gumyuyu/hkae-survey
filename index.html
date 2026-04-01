@@ -6,17 +6,17 @@
   <title>室內設計需求問卷 | Interior Design Preference Survey</title>
   <style>
     :root {
-      --primary: #6c63ff;
-      --primary-light: #a29bfe;
-      --primary-dark: #4834d4;
-      --accent: #fd79a8;
-      --bg: #f8f7ff;
+      --primary: #749e9c;
+      --primary-light: #bed5d5;
+      --primary-dark: #608185;
+      --accent: #dc8969;
+      --bg: #f2f0eb;
       --card: #ffffff;
-      --text: #2d3436;
-      --text-muted: #636e72;
-      --border: #dfe6e9;
-      --success: #00b894;
-      --shadow: 0 8px 32px rgba(108,99,255,0.10);
+      --text: #4f5f64;
+      --text-muted: #7e8e95;
+      --border: #d2d0c6;
+      --success: #749e9c;
+      --shadow: 0 8px 32px rgba(96,129,133,0.14);
       --radius: 18px;
     }
 
@@ -193,6 +193,37 @@
     }
     .upload-actions {
       display: flex; gap: 12px; margin-top: 20px;
+    }
+    .upload-alt {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .upload-alt-divider {
+      font-size: .82rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .btn-template {
+      width: 100%;
+      padding: 12px 20px;
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--primary);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .btn-template:hover {
+      background: rgba(108,99,255,.05);
+    }
+    .btn-template.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(108,99,255,.3);
     }
     .btn-upload-next {
       flex: 1;
@@ -397,6 +428,9 @@ const i18n = {
     uploadSubtitle: '上傳您家中的平面圖，幫助設計師更好地理解您的空間。',
     uploadLabel: '點擊或拖拽上傳平面圖（JPG、PNG、PDF）',
     uploadHint: '支持 JPG、PNG、PDF 格式，最大 10MB',
+    templateDivider: '或',
+    useTemplateBtn: '使用範本平面圖',
+    templateSelected: '✓ 已選擇範本：plantemplate.jpg',
     previewLabel: '平面圖預覽：',
     uploadNextBtn: '確認並繼續 →',
     finishTitle: '問卷完成！',
@@ -422,16 +456,16 @@ const i18n = {
         title: '您喜歡什麼色調 / 風格？',
         sub: 'What color tones and design styles do you prefer?',
         styles: [
-          { label: '北歐簡約', color: '#e8e0d5', text: '#5a5a5a' },
-          { label: '現代都市', color: '#2d3436', text: '#fff' },
-          { label: '日式侘寂', color: '#c8b9a2', text: '#4a3f35' },
-          { label: '工業風', color: '#636e72', text: '#fff' },
-          { label: '鄉村田園', color: '#a8c5a0', text: '#3a5a40' },
-          { label: '地中海', color: '#74b9ff', text: '#fff' },
-          { label: '奢華古典', color: '#c9a84c', text: '#fff' },
-          { label: '波西米亞', color: '#e17055', text: '#fff' },
-          { label: '清新粉嫩', color: '#fab1c0', text: '#5a2d3a' },
-          { label: '自然原木', color: '#b8860b', text: '#fff' },
+          { label: '北歐簡約', color: '#f0ebe7', text: '#5e6365' },
+          { label: '現代都市', color: '#9eacb3', text: '#ffffff' },
+          { label: '日式侘寂', color: '#c8bdae', text: '#544a40' },
+          { label: '工業風', color: '#608185', text: '#ffffff' },
+          { label: '鄉村田園', color: '#bdccc0', text: '#435550' },
+          { label: '地中海', color: '#74a9c0', text: '#ffffff' },
+          { label: '奢華古典', color: '#e2b47b', text: '#5c4731' },
+          { label: '波西米亞', color: '#dc8969', text: '#ffffff' },
+          { label: '清新粉嫩', color: '#eacbcb', text: '#5f4e4f' },
+          { label: '自然原木', color: '#dbcdb8', text: '#5a4938' },
         ]
       },
       {
@@ -509,6 +543,9 @@ const i18n = {
     uploadSubtitle: 'Upload your home floor plan to help designers better understand your space.',
     uploadLabel: 'Click or drag to upload floor plan (JPG, PNG, PDF)',
     uploadHint: 'Supports JPG, PNG, PDF formats, max 10MB',
+    templateDivider: 'or',
+    useTemplateBtn: 'Use template floor plan',
+    templateSelected: '✓ Template selected: plantemplate.jpg',
     previewLabel: 'Floor Plan Preview:',
     uploadNextBtn: 'Confirm & Continue →',
     finishTitle: 'Survey Complete!',
@@ -534,16 +571,16 @@ const i18n = {
         title: 'What color tones and design styles do you prefer?',
         sub: '您喜歡什麼色調 / 風格？',
         styles: [
-          { label: 'Nordic Minimalist', color: '#e8e0d5', text: '#5a5a5a' },
-          { label: 'Modern Urban', color: '#2d3436', text: '#fff' },
-          { label: 'Japanese Wabi-sabi', color: '#c8b9a2', text: '#4a3f35' },
-          { label: 'Industrial', color: '#636e72', text: '#fff' },
-          { label: 'Rustic Countryside', color: '#a8c5a0', text: '#3a5a40' },
-          { label: 'Mediterranean', color: '#74b9ff', text: '#fff' },
-          { label: 'Luxury Classic', color: '#c9a84c', text: '#fff' },
-          { label: 'Bohemian', color: '#e17055', text: '#fff' },
-          { label: 'Fresh & Pastel', color: '#fab1c0', text: '#5a2d3a' },
-          { label: 'Natural Wood', color: '#b8860b', text: '#fff' },
+          { label: 'Nordic Minimalist', color: '#f0ebe7', text: '#5e6365' },
+          { label: 'Modern Urban', color: '#9eacb3', text: '#ffffff' },
+          { label: 'Japanese Wabi-sabi', color: '#c8bdae', text: '#544a40' },
+          { label: 'Industrial', color: '#608185', text: '#ffffff' },
+          { label: 'Rustic Countryside', color: '#bdccc0', text: '#435550' },
+          { label: 'Mediterranean', color: '#74a9c0', text: '#ffffff' },
+          { label: 'Luxury Classic', color: '#e2b47b', text: '#5c4731' },
+          { label: 'Bohemian', color: '#dc8969', text: '#ffffff' },
+          { label: 'Fresh & Pastel', color: '#eacbcb', text: '#5f4e4f' },
+          { label: 'Natural Wood', color: '#dbcdb8', text: '#5a4938' },
         ]
       },
       {
@@ -621,6 +658,7 @@ let isUploadStage = true;
 let currentLang = 'zh';
 const answers = {};
 let floorPlanFile = null;
+let useTemplateFloorPlan = false;
 
 // ─────────────────────────────────────────────
 //  Language Toggle
@@ -669,6 +707,11 @@ function renderUploadStage() {
         <input type="file" id="floor-plan-input" accept=".jpg,.jpeg,.png,.pdf" />
         <div class="file-name" id="file-name"></div>
       </div>
+      
+      <div class="upload-alt">
+        <div class="upload-alt-divider">${t.templateDivider}</div>
+        <button type="button" class="btn-template" id="btn-template">${t.useTemplateBtn}</button>
+      </div>
 
       <div class="preview-wrap" id="preview-wrap">
         <div class="preview-label" id="preview-label">${t.previewLabel}</div>
@@ -687,12 +730,15 @@ function renderUploadStage() {
   const previewWrap = document.getElementById('preview-wrap');
   const previewImage = document.getElementById('preview-image');
   const btnNext = document.getElementById('btn-upload-next');
+  const btnTemplate = document.getElementById('btn-template');
 
   // File input handler
   fileInput.addEventListener('change', e => {
     const file = e.target.files[0];
     if (!file) return;
 
+    useTemplateFloorPlan = false;
+    btnTemplate.classList.remove('active');
     floorPlanFile = file;
     fileName.textContent = `✓ ${file.name}`;
     fileName.classList.add('show');
@@ -711,6 +757,20 @@ function renderUploadStage() {
       previewImage.src = '📄';
       previewWrap.classList.add('show');
     }
+  });
+
+  // Template selection handler
+  btnTemplate.addEventListener('click', () => {
+    useTemplateFloorPlan = true;
+    floorPlanFile = null;
+    fileInput.value = '';
+    btnTemplate.classList.add('active');
+    fileLabel.classList.remove('active');
+    fileName.textContent = t.templateSelected;
+    fileName.classList.add('show');
+    previewImage.src = 'plantemplate.jpg';
+    previewWrap.classList.add('show');
+    btnNext.disabled = false;
   });
 
   // Drag & drop
@@ -994,7 +1054,10 @@ function showFinish() {
 
   // Save answers & floor plan
   localStorage.setItem('interiorAnswers', JSON.stringify(answers));
-  if (floorPlanFile) {
+  if (useTemplateFloorPlan) {
+    localStorage.setItem('floorPlanData', 'plantemplate.jpg');
+    localStorage.setItem('floorPlanName', 'plantemplate.jpg');
+  } else if (floorPlanFile) {
     const reader = new FileReader();
     reader.onload = e => {
       localStorage.setItem('floorPlanData', e.target.result);
